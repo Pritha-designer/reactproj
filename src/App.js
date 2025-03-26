@@ -29,8 +29,8 @@ function App() {
 
   const validate = (values) => {
     const errors = {};
-    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?!@$%^&*-]).{8,}$/;
-
+    // const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?!@$%^&*-]).{8,}$/;
+    const emailregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!values.username) {
       errors.username = "Name is required";
@@ -39,7 +39,7 @@ function App() {
     if (!values.email) {
       errors.email = "Email is required";
     }
-    else if (!regex.test(values.email)) {
+    else if (!emailregex.test(values.email)) {
       errors.email = "Not a valid email format";
     }
     if (!values.password) {
@@ -89,7 +89,7 @@ function App() {
 
           <div class="col-md-12">
             <label for="email">Email</label>
-            <input type="text" class="form-control"
+            <input type="email" class="form-control"
               name="email"
               placeholder="Enter your emailid"
               value={formValues.email}
